@@ -1,0 +1,80 @@
+<html lang='pt-br' >
+
+<head>
+    <title>TODO LIST - JS</title>
+    <meta charset="utf-8" />
+    <link rel='stylesheet' href='index.css' />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,700&display=swap" rel="stylesheet">
+    <script type='text/javascript' src='index.js'></script>
+</head>
+
+<body>
+    <header>
+        <h1>TODO LIST - JS</h1>
+    </header>
+    <main class='container'>
+        <button class='open-modal' onclick='handleShowModal()'>Create new task</button>
+        <div class="board">
+            <div class='board-column'>
+                <h2 class='column-title title-todo'>Task Ready</h2>
+                <ul class='list' id='list-todo' ondrop='drop(event)' ondragover='allowDrop(event)'></ul>
+                <div class='container-drag-in-drop' onclick='handleShowModal()'>
+                    <span> + Add Card</span>
+                </div>
+            </div>
+            <div class='board-column'>
+                <h2 class='column-title title-doing'>On Progress</h2>
+                <ul class='list' id='list-doing' ondrop='drop(event)' ondragover='allowDrop(event)'></ul>
+                <div class='container-drag-in-drop' onclick='handleShowModal()'>
+                    <span> + Add Card</span>
+                </div>
+            </div>
+            <div class='board-column'>
+                <h2 class='column-title title-done'>Done</h2>
+                <ul class='list' id='list-done' ondrop='drop(event)' ondragover='allowDrop(event)'></ul>
+                <div class='container-drag-in-drop' onclick='handleShowModal()'>
+                    <span> + Add Card</span>
+                </div>
+            </div>
+        </div>
+        <div class="overlay" id="overlay">
+            <div class="form" id="form">
+                <h3>New Task</h3>
+                <label for='task-name'>Title</label>
+                <input type='text' id='task-name' autocomplete="off"/>
+
+                <label for='task-description'>Description</label>
+                <textarea name='task-description' id='task-description' rows="8"></textarea>
+
+                <label for='task-status'>Status</label>
+                <select id='task-status'>
+                    <option value='todo'>To Do</option>
+                    <option value='doing'>Doing</option>
+                    <option value='done'>Done</option>
+                </select>
+
+                
+                <label for='task-label'>Label</label>
+                <select id='task-label'>
+                    <option value='frontend'>Frontend</option>
+                    <option value='design'>Design</option>
+                    <option value='backend'>Backend</option>
+                </select>
+
+                <div class='container-action'>
+                    <button id='save-button' class='save-button' onclick='handleCreateTask()'>Create</button>
+                    <button id='cancel-button' class='cancel-button' onclick='handleShowModal()'>Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-toast">
+            <ul class='toast-list' id='toast-list'>
+
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

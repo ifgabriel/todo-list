@@ -1,0 +1,253 @@
+* {
+  font-family: 'Roboto Flex', sans-serif;
+  box-sizing: border-box;
+  outline-color: #7784EE;
+}
+
+header {
+  width: 1140px;
+  margin: 0 auto;
+  padding: 50px 0;
+
+  color: #121212;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(to right top, #ECF0F8, #F7EAE5);
+  backdrop-filter: blur(100px);
+}
+
+.container {
+  width: 1140px;
+  margin: 0 auto;
+}
+
+.board {
+  margin: 50px 0;
+  padding: 30px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.349);
+}
+
+.board {
+  gap: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.column-title {
+  padding: 8px 4px;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  
+  min-height: 30px;
+  background-color: #D6DDE963;
+  border-radius: 8px;
+
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.task {
+  padding: 8px 16px;
+  border-radius: 4px;
+  background: #FFF;
+  
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-todo {
+  border-bottom: 1px solid #7961E9;
+}
+
+.title-doing {
+  border-bottom: 1px solid #FBC35C;
+}
+
+.title-done {
+  border-bottom: 1px solid #8BC48A;
+}
+
+
+.overlay {
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 15000;
+  
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #00000079;
+}
+
+.form {
+  width: 600px;
+
+  padding: 16px 24px;
+  border-radius: 8px;
+  background: #FFF;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+input, select {
+  height: 40px;
+}
+
+input, textarea, select {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.container-action {
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 16px;
+}
+
+button {
+  height: 40px;
+  cursor: pointer;
+  padding: 8px 16px;
+
+  font: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  border: none;
+  border-radius: 4px;
+
+  box-sizing: border-box;
+}
+
+.open-modal {
+  color: #FFF;
+  background: #e775b6;
+}
+
+.save-button {
+  color: #FFF;
+  background: #7784EE;
+}
+
+.cancel-button {
+  color: #7784EE;
+  background: inherit;
+  
+  border: 1px solid #7784EE;
+
+  font-weight: 700;
+}
+
+.container-drag-in-drop {
+  cursor: pointer;
+  margin-top: 16px;
+
+  border-radius: 4px;
+  border: 1px dashed #D6DDE9;
+
+  padding: 16px;
+
+  color: #8893A5;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  text-align: center;
+  text-transform: capitalize;
+  
+  width: 100px;
+  height: 25px;
+  padding: 8px;
+
+  border-radius: 4px;
+}
+
+.frontend {
+  color: #B24CC2;
+  background: #F2DCF5;
+}
+
+.backend {
+  color: #1F8B57;
+  background: #D6EDE2;
+}
+
+.design {
+  color: #5BA3CC;
+  background: #CEECFD;
+}
+
+.container-toast {
+  top: 0;
+  right: 0;
+  position: fixed;
+
+  padding: 16px;
+  z-index: 150000;
+}
+
+.toast-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.toast {
+  width: 280px;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  color: #3C3A3B;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.4)
+}
+
+
+.toast-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.toast-description {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.success {
+  background: #00a17e71;
+}
+
+.error {
+  background: #c9474793;
+}
