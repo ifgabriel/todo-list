@@ -4,11 +4,15 @@
   outline-color: #7784EE;
 }
 
+
+h1 {
+  font-weight: 700;
+}
+
 header {
   width: 1140px;
   margin: 0 auto;
   padding: 50px 0;
-
   color: #121212;
 }
 
@@ -47,8 +51,7 @@ body {
   margin: 0;
   list-style: none;
   
-  min-height: 30px;
-  background-color: #D6DDE963;
+  padding: 16px 8px;
   border-radius: 8px;
 
   gap: 24px;
@@ -64,6 +67,8 @@ body {
   gap: 20px;
   display: flex;
   flex-direction: column;
+
+  cursor: move;
 }
 
 .title-todo {
@@ -77,7 +82,6 @@ body {
 .title-done {
   border-bottom: 1px solid #8BC48A;
 }
-
 
 .overlay {
   top:0;
@@ -157,6 +161,11 @@ button {
   border: 1px solid #7784EE;
 
   font-weight: 700;
+}
+
+.list-hover {
+  border: 1px dashed #D6DDE9;
+  background: #8893a505;
 }
 
 .container-drag-in-drop {
