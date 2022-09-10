@@ -117,9 +117,24 @@ input, select {
 }
 
 input, textarea, select {
+  margin: 8px 0;
   width: 100%;
   border-radius: 4px;
   border: 1px solid #ccc;
+}
+
+input[aria-invalid="true"], 
+textarea[aria-invalid="true"] {
+  outline-color: #ff202093;
+  border-color: #ff202093;
+}
+
+.response {
+  margin-top: 8px;
+}
+
+.response-error {
+  color: #ff202093;
 }
 
 .container-action {

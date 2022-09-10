@@ -31,12 +31,6 @@ function handleShowModal() {
   }
 }
 
-function handleCloseModal(e) {
-  if (e.target.contains('overlay') && !! e.target.contains(form)) {
-    handleShowModal()
-  }
-}
-
 function handleList(initialStatus) {
   if (initialStatus === 'todo') return document.getElementById('list-todo')
   if (initialStatus === 'doing') return document.getElementById('list-doing')
@@ -45,13 +39,39 @@ function handleList(initialStatus) {
   return document.getElementById('list-todo')
 }
 
-function handleCreateTask() {
+
+function handleValidation(inputs) {
+  const isInvalid = false
+
+  Array.from(inputs).forEach((input) => {
+    const isInvalid = input.value.length < 1
+  })
+
+  return isInvalid  
+}
+
+function handleCreateTask(event) {
+  event.preventDefault();
+
   const title = document.getElementById('task-name').value
   const label = document.getElementById('task-label').value
   const initialStatus = document.getElementById('task-status').value
   const description = document.getElementById('task-description').value
-
+  const inputs = document.getElementById('modal-form').elements
   const list = handleList(initialStatus)
+
+  Array.from(inputs).forEach((input, index) => {
+    const isInvalid = input.value.length < 1
+
+    input.setAttribute('aria-invalid', isInvalid)
+    
+    if(isInvalid && index <= 2) {
+      const responseElement = document.getElementById(`${input.id}-response`)
+
+      responseElement.innerHTML = 'Campo obrigatório!'
+      responseElement.classList.add('response-error')
+    }
+  })
 
   if (title && description && initialStatus && label) {
     list.innerHTML += `
@@ -63,10 +83,22 @@ function handleCreateTask() {
     `
 
     handleToast('success')
+    handleShowModal()
+  }
+}
 
-  } else handleToast('error')
+function handleChange(event) {
+  const input = event.target
+  const isInvalid = input.getAttribute('aria-invalid') === 'true'
+  
+  if (isInvalid) {
+    const responseElement = document.getElementById(`${input.id}-response`)
 
-  handleShowModal()
+    input.setAttribute('aria-invalid', false)
+
+    responseElement.innerHTML = 'Preencha o campo'
+    responseElement.classList.remove('response-error')
+  }
 }
 
 function handleToast(status) {
@@ -77,13 +109,6 @@ function handleToast(status) {
       <li class='toast success'>
           <span class='toast-title'>Ação concluída!</span>
           <span class='toast-description'>Nova tarefa cadastrada.</span>
-      </li>
-    `
-  } else {
-    toast.innerHTML += `
-      <li class='toast error'>
-          <span class='toast-title'>Tivemos um problema!</span>
-          <span class='toast-description'>Preencha todos os campos.</span>
       </li>
     `
   }

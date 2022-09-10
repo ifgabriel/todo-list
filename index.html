@@ -40,34 +40,43 @@
             </div>
         </div>
         <div class="overlay" id="overlay">
-            <div class="form" id="form">
+            <form class="form" id="modal-form" onsubmit="handleCreateTask(event)" method="post">
                 <h3>New Task</h3>
-                <label for='task-name'>Title</label>
-                <input type='text' id='task-name' autocomplete="off"/>
+                <div>
+                    <label for='task-name'>Title</label>
+                    <input type='text' id='task-name' autocomplete="off" onChange="handleChange(event)"/>
+                    <span id="task-name-response" class="response">Preencha o campo</span>
+    
+                </div>
+                <div>
+                    <label for='task-description'>Description</label>
+                    <textarea name='task-description' id='task-description' rows="8" onChange="handleChange(event)"></textarea>
+                    <span id="task-description-response" class="response">Preencha o campo</span>
+                </div>
 
-                <label for='task-description'>Description</label>
-                <textarea name='task-description' id='task-description' rows="8"></textarea>
+                <div>
+                    <label for='task-status'>Status</label>
+                    <select id='task-status' name="task-status">
+                        <option value='todo'>To Do</option>
+                        <option value='doing'>Doing</option>
+                        <option value='done'>Done</option>
+                    </select>
+                </div>
 
-                <label for='task-status'>Status</label>
-                <select id='task-status'>
-                    <option value='todo'>To Do</option>
-                    <option value='doing'>Doing</option>
-                    <option value='done'>Done</option>
-                </select>
-
-                
-                <label for='task-label'>Label</label>
-                <select id='task-label'>
-                    <option value='frontend'>Frontend</option>
-                    <option value='design'>Design</option>
-                    <option value='backend'>Backend</option>
-                </select>
+                <div>
+                    <label for='task-label'>Label</label>
+                    <select id='task-label' name="task-label">
+                        <option value='frontend'>Frontend</option>
+                        <option value='design'>Design</option>
+                        <option value='backend'>Backend</option>
+                    </select>
+                </div>
 
                 <div class='container-action'>
-                    <button id='save-button' class='save-button' onclick='handleCreateTask()'>Create</button>
+                    <button id='save-button' class='save-button' type='submit'>Create</button>
                     <button id='cancel-button' class='cancel-button' onclick='handleShowModal()'>Cancel</button>
                 </div>
-            </div>
+            </form>
         </div>
 
         <div class="container-toast">
